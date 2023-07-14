@@ -1,0 +1,37 @@
+.leftbar {
+  .wrapper {
+    padding: 20px;
+    hr{
+        margin: 20px 0px;
+        border: none;
+        height: 0.5px;
+        background-color: lightgray;
+    }
+    .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      .user {
+        display: flex;
+        align-items: center;
+        gap:10px;
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50px;
+          object-fit: cover;
+        }
+      }
+
+      .item{
+        display: flex;
+        align-items: center;
+        gap:10px;
+
+        img{
+            width: 30px;
+        }
+      }
+    }
+  }
+}
