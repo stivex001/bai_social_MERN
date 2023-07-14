@@ -11,8 +11,7 @@ import "./navbar.scss";
 
 const Navbar = () => {
   return (
-    <div className="container">
-      <div className="wrapper">
+      <div className="navbar">
         <div className="left">
           <Link to="/" style={{ textDecoration: "none" }}>
             <span>Baiconnect</span>
@@ -41,7 +40,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 .leftbar {
+    flex: 2;
   .wrapper {
     padding: 20px;
     hr{
@@ -21,6 +22,10 @@
           border-radius: 50px;
           object-fit: cover;
         }
+
+        span{
+            font-size: 14px;
+        }
       }
 
       .item{
@@ -30,6 +35,9 @@
 
         img{
             width: 30px;
+        }
+        span{
+            font-size: 14px;
         }
       }
     }
