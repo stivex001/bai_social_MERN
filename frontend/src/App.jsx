@@ -1,15 +1,22 @@
 import Layout from "./Layout";
+import ProtectedRoute from "./ProtectedRoute";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+const currentUser = false;
+
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+      element: (
+        <ProtectedRoute currentUser={currentUser}>
+          <Layout />
+        </ProtectedRoute>
+      ),
       children: [
         {
           path: "/",
