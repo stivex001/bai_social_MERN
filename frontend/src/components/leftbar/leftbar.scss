@@ -1,21 +1,29 @@
 .leftbar {
-    flex: 2;
+  flex: 2;
+  position: sticky;
+  top: 90px;
+  height: calc(100vh - 70px);
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
   .wrapper {
     padding: 20px;
-    hr{
-        margin: 20px 0px;
-        border: none;
-        height: 0.5px;
-        background-color: lightgray;
+    hr {
+      margin: 20px 0px;
+      border: none;
+      height: 0.5px;
+      background-color: lightgray;
     }
     .menu {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
       .user {
         display: flex;
         align-items: center;
-        gap:10px;
+        gap: 10px;
         img {
           width: 30px;
           height: 30px;
@@ -23,21 +31,21 @@
           object-fit: cover;
         }
 
-        span{
-            font-size: 14px;
+        span {
+          font-size: 14px;
         }
       }
 
-      .item{
+      .item {
         display: flex;
         align-items: center;
-        gap:10px;
+        gap: 10px;
 
-        img{
-            width: 30px;
+        img {
+          width: 30px;
         }
-        span{
-            font-size: 14px;
+        span {
+          font-size: 14px;
         }
       }
     }
