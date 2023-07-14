@@ -1,0 +1,83 @@
+.register {
+    background-color: rgb(193, 190, 225);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .wrapper {
+      display: flex;
+      flex-direction: row-reverse;
+      width: 50%;
+      background-color: #fff;
+      border-radius: 10px;
+      min-height: 600px;
+      overflow: hidden;
+      .left {
+        flex: 1;
+        background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.1)),
+          url(https://media.istockphoto.com/id/1096035138/photo/beautiful-young-couple-relaxing-after-hiking-and-taking-a-break.jpg?b=1&s=612x612&w=0&k=20&c=b6uSchGzwR2-q2CvdAF7BdCIcqEisu6i1ZMj8NQ3FUI=)
+            center;
+        background-size: cover;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        color: white;
+        justify-content: center;
+        h1 {
+          font-size: 70px;
+          line-height: 70px;
+        }
+  
+        span {
+          font-size: 14px;
+        }
+  
+        button {
+          width: 50%;
+          padding: 10px;
+          border: none;
+          color: rebeccapurple;
+          background-color: white;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+  
+      .right {
+        flex: 1;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        justify-content: center;
+  
+        h1 {
+          color: #555;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+  
+          input {
+            border: none;
+            border-bottom: 1px solid lightgrey;
+            padding: 20px 10px;
+            outline: none;
+          }
+  
+          button {
+            width: 50%;
+            padding: 10px;
+            border: none;
+            color: #fff;
+            background-color: #938eef;
+            font-weight: bold;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  

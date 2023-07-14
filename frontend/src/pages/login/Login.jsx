@@ -7,7 +7,7 @@ const Login = () => {
         <div className="left">
           <h1>Hello World.</h1>
           <p>
-            Welcome to FaceClone! Connect with friends and share your life
+            Welcome to Baiconnect! Connect with friends and share your life
             moments. Please enter your login details to access your account.
           </p>
           <span>Don't you have an account?</span>
