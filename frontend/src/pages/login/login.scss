@@ -1,0 +1,80 @@
+.login {
+  background-color: rgb(193, 190, 225);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .wrapper {
+    display: flex;
+    width: 50%;
+    background-color: #fff;
+    border-radius: 10px;
+    min-height: 600px;
+    .left {
+      flex: 1;
+      background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.1)),
+        url(https://media.istockphoto.com/id/612619528/photo/hippie-woman-stroll-on-mountain.jpg?b=1&s=612x612&w=0&k=20&c=-kboOl2eyX38HKk_8OQ97P8N1yt-bQHXTsiXbhRzy6E=)
+          center;
+      background-size: cover;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      color: white;
+      h1 {
+        font-size: 100px;
+        line-height: 100px;
+      }
+
+      p {
+      }
+
+      span {
+        font-size: 14px;
+      }
+
+      button {
+        width: 50%;
+        padding: 10px;
+        border: none;
+        color: rebeccapurple;
+        background-color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+
+    .right {
+      flex: 1;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      h1 {
+        color: #555;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        input {
+          border: none;
+          border-bottom: 1px solid lightgrey;
+          padding: 20px 10px;
+        }
+
+        button {
+          width: 50%;
+          padding: 10px;
+          border: none;
+          color: #fff;
+          background-color: #938eef;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
