@@ -6,7 +6,7 @@ import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-const currentUser = false;
+const currentUser = true;
 
 function App() {
   const router = createBrowserRouter([
