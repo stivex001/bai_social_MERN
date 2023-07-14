@@ -1,59 +1,66 @@
+@import "../../style.scss";
+
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  height: 70px;
-  background-color: #fff;
-  border-bottom: 1px solid lightgray;
-  position: sticky;
-  top: 0;
-  .left {
+  @include themify($themes) {
     display: flex;
     align-items: center;
-    gap: 30px;
-
-    span {
-      font-size: 20px;
-      font-weight: bold;
-      color: darkblue;
-    }
-
-    .search {
+    justify-content: space-between;
+    padding: 10px 20px;
+    height: 70px;
+    background-color: themed("bg");
+    border-bottom: 1px solid themed("border");;
+    color: themed("textColor");
+    position: sticky;
+    top: 0;
+    .left {
       display: flex;
       align-items: center;
-      gap: 10px;
-      border: 1px solid lightgray;
-      border-radius: 20px;
-      padding: 8px;
+      gap: 30px;
 
-      input {
-        border: none;
-        outline: none;
+      span {
+        font-size: 20px;
+        font-weight: bold;
+        color: themed("logo");
+      }
+
+      .search {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid themed("border");;
+        border-radius: 20px;
+        padding: 8px;
+
+        input {
+          border: none;
+          outline: none;
+          background-color: transparent;
+          color: themed("textColor");
+        }
       }
     }
-  }
 
-  .center {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
-  .right {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-
-    .user {
+    .center {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: 500;
-      img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        object-fit: cover;
+      gap: 30px;
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
       }
     }
   }
