@@ -8,7 +8,7 @@
     padding: 10px 20px;
     height: 70px;
     background-color: themed("bg");
-    border-bottom: 1px solid themed("border");;
+    border-bottom: 1px solid themed("border");
     color: themed("textColor");
     position: sticky;
     z-index: 999;
@@ -28,7 +28,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        border: 1px solid themed("border");;
+        border: 1px solid themed("border");
         border-radius: 20px;
         padding: 8px;
 
@@ -37,6 +37,10 @@
           outline: none;
           background-color: transparent;
           color: themed("textColor");
+
+          @include mobile {
+            display: none;
+          }
         }
       }
     }
@@ -51,6 +55,10 @@
       display: flex;
       align-items: center;
       gap: 30px;
+
+      @include mobile {
+        display: none;
+      }
 
       .user {
         display: flex;

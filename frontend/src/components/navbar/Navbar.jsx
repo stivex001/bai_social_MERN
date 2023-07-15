@@ -22,23 +22,23 @@ const Navbar = () => {
           <span>Baiconnect</span>
         </Link>
         <div className="search">
-          <AiOutlineSearch />
+          <AiOutlineSearch size={25} />
           <input type="text" placeholder="Search Baiconnect" />
         </div>
       </div>
       <div className="center">
-        <AiOutlineHome />
-        <BsFillGrid3X3GapFill />
+        <AiOutlineHome size={25} />
+        <BsFillGrid3X3GapFill size={25} />
         {darkMode ? (
-          <BsSun onClick={toggle} />
+          <BsSun size={25} onClick={toggle} />
         ) : (
-          <HiOutlineMoon onClick={toggle} />
+          <HiOutlineMoon size={25} onClick={toggle} />
         )}
       </div>
       <div className="right">
-        <BsFillPersonFill />
-        <AiOutlineMessage />
-        <MdOutlineNotifications />
+        <BsFillPersonFill size={25} />
+        <AiOutlineMessage size={25} />
+        <MdOutlineNotifications size={25} />
         <div className="user">
           <img src={currentUser.profilePicture} alt="" />
           <span>{currentUser.username}</span>
