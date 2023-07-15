@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import "./stories.scss";
+import { AuthContext } from "../../context/authContext";
+
 const stories = [
   {
     id: 1,
@@ -33,14 +36,22 @@ const stories = [
 ];
 
 const Stories = () => {
+  const { currentUser } = useContext(AuthContext);
   return (
-    <div className="stories">
-      {stories.map((story) => (
-        <div className="story" key={story.id}>
-          <img src={story.img} alt="" />
-          <span>{story.name}</span>
+    <div className="stories-container">
+      <div className="stories">
+        <div className="story">
+          <img src={currentUser.profilePicture} alt="" />
+          <span>{currentUser.username}</span>
+          <button>+</button>
         </div>
-      ))}
+        {stories.map((story) => (
+          <div className="story" key={story.id}>
+            <img src={story.img} alt="" />
+            <span>{story.name}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
