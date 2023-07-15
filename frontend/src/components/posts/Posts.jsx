@@ -4,7 +4,7 @@ import "./posts.scss";
 const posts = [
   {
     id: 1,
-    name: "Post 1",
+    name: "Stephen Adeyemo",
     userId: 123,
     img:
       "https://images.pexels.com/photos/1587604/pexels-photo-1587604.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -12,7 +12,7 @@ const posts = [
   },
   {
     id: 2,
-    name: "Post 2",
+    name: "Stephen Adeyemo",
     userId: 456,
     img:
       "https://images.pexels.com/photos/1587604/pexels-photo-1587604.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -20,7 +20,7 @@ const posts = [
   },
   {
     id: 3,
-    name: "Post 3",
+    name: "Stephen Adeyemo",
     userId: 789,
     img:
       "https://images.pexels.com/photos/1587604/pexels-photo-1587604.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -28,7 +28,7 @@ const posts = [
   },
   {
     id: 4,
-    name: "Post 4",
+    name: "Stephen Adeyemo",
     userId: 123,
     img:
       "https://images.pexels.com/photos/1587604/pexels-photo-1587604.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -36,7 +36,7 @@ const posts = [
   },
   {
     id: 5,
-    name: "Post 5",
+    name: "Stephen Adeyemo",
     userId: 456,
     img:
       "https://images.pexels.com/photos/1587604/pexels-photo-1587604.jpeg?auto=compress&cs=tinysrgb&w=600",
