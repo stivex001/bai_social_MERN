@@ -8,16 +8,16 @@ export const ThemeContextProvider = ({ children }) => {
   );
 
   const toggle = () => {
-    setdarkMode(!darkMode)
-  }
+    setdarkMode(!darkMode);
+  };
 
   useEffect(() => {
-    JSON.stringify(localStorage.setItem("darkMode", darkMode))
-  }, [darkMode])
+    localStorage.setItem("darkMode", darkMode);
+  }, [darkMode]);
 
   return (
-    <ThemeContext.Provider value={{darkMode, toggle}}>
-        {children}
+    <ThemeContext.Provider value={{ darkMode, toggle }}>
+      {children}
     </ThemeContext.Provider>
-  )
+  );
 };

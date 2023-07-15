@@ -6,14 +6,12 @@ import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-const currentUser = true;
-
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: (
-        <ProtectedRoute currentUser={currentUser}>
+        <ProtectedRoute>
           <Layout />
         </ProtectedRoute>
       ),

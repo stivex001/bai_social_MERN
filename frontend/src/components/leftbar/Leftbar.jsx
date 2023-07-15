@@ -1,17 +1,20 @@
+import { useContext } from "react";
 import { firstData, secondData, thirdData } from "./data";
 import "./leftbar.scss";
+import { AuthContext } from "../../context/authContext";
 
 const Leftbar = () => {
+  const { currentUser } = useContext(AuthContext);
   return (
     <div className="leftbar">
       <div className="wrapper">
         <div className="menu">
           <div className="user">
             <img
-              src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=600"
+              src={currentUser.profilePicture}
               alt=""
             />
-            <span>Stephen Adeyemo</span>
+            <span>{currentUser.username}</span>
           </div>
           {firstData.map((item) => (
             <div className="item" key={item.id}>
