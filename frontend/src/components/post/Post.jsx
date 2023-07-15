@@ -4,9 +4,14 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import { MdOutlineFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { AiOutlineMessage } from "react-icons/ai";
+import Comments from "../comments/Comments";
+import { useState } from "react";
 
 const Post = ({ post }) => {
+  const [commentOpen, setCommentOpen] = useState(false);
+
   const liked = false;
+
   return (
     <div className="post">
       <div className="container">
@@ -34,7 +39,7 @@ const Post = ({ post }) => {
             {liked ? <MdOutlineFavorite /> : <MdOutlineFavoriteBorder />}
             12 likes
           </div>
-          <div className="item">
+          <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <AiOutlineMessage />5 Comments
           </div>
           <div className="item">
@@ -42,6 +47,7 @@ const Post = ({ post }) => {
             Share
           </div>
         </div>
+        {commentOpen && <Comments />}
       </div>
     </div>
   );
