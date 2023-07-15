@@ -60,6 +60,10 @@
         display: none;
       }
 
+      @include tablet {
+        display: none;
+      }
+
       .user {
         display: flex;
         align-items: center;

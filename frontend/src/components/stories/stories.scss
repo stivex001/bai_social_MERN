@@ -19,6 +19,11 @@
       height: 150px;
     }
 
+    @include tablet {
+      height: 150px;
+      gap:15px;
+    }
+
     .story {
       flex: 0 0 auto;
       flex-basis: calc(100% / 4 - 10px);
@@ -41,6 +46,10 @@
         @include mobile {
           display: none;
         }
+
+        @include tablet {
+          display: none;
+        }
       }
 
       button {
@@ -61,6 +70,13 @@
         @include mobile {
           left: 30px;
           bottom: 20px;
+        }
+        @include tablet {
+          left: 0;
+          bottom: 0;
+          top: 0;
+          right: 0;
+          margin: auto;
         }
       }
     }
