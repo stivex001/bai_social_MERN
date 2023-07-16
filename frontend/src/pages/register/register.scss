@@ -20,6 +20,11 @@
       flex-direction: column;
       margin: 20px 0px;
     }
+
+    @include tablet {
+      width: 100%;
+    }
+
     .left {
       flex: 1;
       background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.1)),

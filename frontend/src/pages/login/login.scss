@@ -19,6 +19,11 @@
       width: 100%;
       flex-direction: column;
     }
+
+    @include tablet {
+      width: 100%;
+    }
+
     .left {
       flex: 1;
       background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.1)),
@@ -34,6 +39,10 @@
       @include mobile {
         padding: 20px;
         margin: 20px 10px;
+      }
+
+      @include tablet {
+        padding: 20px;
       }
 
       h1 {
@@ -69,6 +78,7 @@
       flex-direction: column;
       gap: 50px;
       justify-content: center;
+      
 
       h1 {
         color: #555;
