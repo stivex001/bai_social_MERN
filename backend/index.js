@@ -4,11 +4,15 @@ import authRoutes from "./routes/auth.js";
 import commentRoutes from "./routes/comments.js";
 import likesRoutes from "./routes/likes.js";
 import postRoutes from "./routes/posts.js";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 
-// Routes
+// Middlewares
+app.use(express.json());
 
+// Routes
 app.use("/api/v1/users", userRoutes);
 // app.use("/api/v1/comments", commentRoutes);
 // app.use("/api/v1/posts", postRoutes);
