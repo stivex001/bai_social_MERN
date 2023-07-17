@@ -5,12 +5,16 @@ import commentRoutes from "./routes/comments.js";
 import likesRoutes from "./routes/likes.js";
 import postRoutes from "./routes/posts.js";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import cors from "cors"
 
 dotenv.config();
 const app = express();
 
 // Middlewares
 app.use(express.json());
+app.use(cors());
+app.use(cookieParser())
 
 // Routes
 app.use("/api/v1/users", userRoutes);
