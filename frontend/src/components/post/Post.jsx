@@ -25,13 +25,13 @@ const Post = ({ post }) => {
               >
                 <p>{post.name}</p>
               </Link>
-              <span>a few seconds ago</span>
+              <span>{post.created_at} </span>
             </div>
           </div>
           <FiMoreHorizontal />
         </div>
         <div className="content">
-          <p>{post.description}</p>
+          <p>{post.desc}</p>
           <img src={post.img} alt="" />
         </div>
         <div className="actions">
