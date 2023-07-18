@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
 import { useState } from "react";
+import axios from "axios"
 
 const Register = () => {
 
@@ -11,9 +12,26 @@ const Register = () => {
     name: ""
   })
 
+  const [err, setErr] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     setInputs(prev => ({...prev, [e.target.name]: e.target.value}))
   }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    setIsLoading(true)
+    try {
+      await axios.post("http://localhost:8080/api/v1/auth/register", inputs)
+      setIsLoading(false)
+    } catch (err) {
+      setErr(err.response?.data)
+    }
+  }
+
 
   return (
     <div className="register">
@@ -31,12 +49,13 @@ const Register = () => {
         </div>
         <div className="right">
           <h1>Register</h1>
-          <form action="">
+          <p style={{color: "red"}}>{err && err}</p>  
+          <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Name" onChange={handleChange} name="name" />
             <input type="text" placeholder="Username" onChange={handleChange} name="username" />
             <input type="email" placeholder="Email" onChange={handleChange} name="email" />
             <input type="password" placeholder="Password" onChange={handleChange} name="password" />
-            <button>Register</button>
+            <button type="submit">{isLoading ? "Registering...." : "Register"} </button>
           </form>
         </div>
       </div>
