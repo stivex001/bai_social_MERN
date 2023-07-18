@@ -17,7 +17,7 @@ const Post = ({ post }) => {
       <div className="container">
         <div className="user">
           <div className="userInfos">
-            <img src={post.img} alt="" />
+            <img src={post.profilePicture} alt="" />
             <div className="desc">
               <Link
                 to={`/profile/${post.userId}`}

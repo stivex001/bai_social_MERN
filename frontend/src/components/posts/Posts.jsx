@@ -47,12 +47,16 @@ const Posts = () => {
       return res.data;
     })
   );
-  console.log(data);
+
   return (
     <div className="posts">
-      {data?.map((post) => (
-        <Post post={post} key={post.id} />
-      ))}
+      {error ? (
+        <div style={{color: "red"}}>Opps!! Something Went Wrong!</div>
+      ) : isLoading ? (
+        <div style={{color: "green", fontSize: "30px"}}>Loading.........</div>
+      ) : (
+        data?.map((post) => <Post post={post} key={post.id} />)
+      )}
     </div>
   );
 };
