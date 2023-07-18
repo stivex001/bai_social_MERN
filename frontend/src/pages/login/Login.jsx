@@ -5,10 +5,21 @@ import { AuthContext } from "../../context/authContext";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
+  const [inputs, setInputs] = useState({
+    username: "",
+    email: "",
+    password: "",
+    name: "",
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleLogin = () => {
-    login()
-  }
+    login();
+  };
 
   return (
     <div className="login">
@@ -27,8 +38,18 @@ const Login = () => {
         <div className="right">
           <h1>Login</h1>
           <form action="">
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
+            <input
+              type="text"
+              placeholder="Username"
+              name="username"
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={handleChange}
+            />
             <button onClick={handleLogin}>Login</button>
           </form>
         </div>
