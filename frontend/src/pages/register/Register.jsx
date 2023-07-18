@@ -23,8 +23,8 @@ const Register = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    setIsLoading(true)
     try {
+      setIsLoading(true)
       await axios.post("http://localhost:8080/api/v1/auth/register", inputs)
       setIsLoading(false)
       navigate('/login')
