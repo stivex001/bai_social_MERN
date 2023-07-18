@@ -4,20 +4,25 @@ import Leftbar from "./components/leftbar/Leftbar";
 import Rightbar from "./components/rightbar/Rightbar";
 import { Outlet } from "react-router-dom";
 import { ThemeContext } from "./context/themeContext";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 const Layout = () => {
-  const {darkMode} = useContext(ThemeContext)
+  const { darkMode } = useContext(ThemeContext);
   return (
-    <div className={`theme-${darkMode ? "dark" : "light"}`}>
-      <Navbar />
-      <div style={{ display: "flex" }}>
-        <Leftbar />
-        <div style={{flex: "6"}}>
-          <Outlet />
+    <QueryClientProvider client={queryClient}>
+      <div className={`theme-${darkMode ? "dark" : "light"}`}>
+        <Navbar />
+        <div style={{ display: "flex" }}>
+          <Leftbar />
+          <div style={{ flex: "6" }}>
+            <Outlet />
+          </div>
+          <Rightbar />
         </div>
-        <Rightbar />
       </div>
-    </div>
+    </QueryClientProvider>
   );
 };
 
