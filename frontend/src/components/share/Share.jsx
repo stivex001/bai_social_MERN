@@ -2,26 +2,63 @@ import "./share.scss";
 import Image from "../../assets/img.png";
 import Map from "../../assets/map.png";
 import Friend from "../../assets/friend.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
+import { apiCalls } from "../../axios.js";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "react-query";
 
 const Share = () => {
+  const { currentUser } = useContext(AuthContext);
 
-  const {currentUser} = useContext(AuthContext)
+  const [file, setFile] = useState(null);
+  const [desc, setDesc] = useState("");
+
+  const queryClient = new QueryClient();
+
+  // Mutations
+  const mutation = useMutation(
+    (newPost) => {
+      return apiCalls.post("/posts", newPost);
+    },
+    {
+      onSuccess: () => {
+        // Invalidate and refetch
+        queryClient.invalidateQueries("posts");
+      },
+    }
+  );
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    mutation.mutate({ desc });
+  };
+
   return (
     <div className="share">
       <div className="container">
         <div className="top">
-          <img
-            src={currentUser.profilePic}
-            alt=""
+          <img src={currentUser.profilePic} alt="" />
+          <input
+            type="text"
+            placeholder={`What's on your mind ${currentUser.name}?`}
+            onChange={(e) => setDesc(e.target.value)}
           />
-          <input type="text" placeholder={`What's on your mind ${currentUser.name}?`} />
         </div>
         <hr />
         <div className="bottom">
           <div className="left">
-            <input type="file" id="file" style={{display:"none"}} />
+            <input
+              type="file"
+              id="file"
+              style={{ display: "none" }}
+              onChange={(e) => setFile(e.target.files[0])}
+            />
             <label htmlFor="file">
               <div className="item">
                 <img src={Image} alt="" />
@@ -38,7 +75,7 @@ const Share = () => {
             </div>
           </div>
           <div className="right">
-            <button>Share</button>
+            <button onClick={handleClick}>Share</button>
           </div>
         </div>
       </div>
