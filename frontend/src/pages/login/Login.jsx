@@ -1,24 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.scss";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
   const [inputs, setInputs] = useState({
     username: "",
-    email: "",
     password: "",
-    name: "",
   });
+  const [err, setErr] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleLogin = () => {
-    login();
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      setIsLoading(true);
+      await login(inputs);
+      setIsLoading(false);
+      navigate("/")
+    } catch (err) {
+      setErr(err.response?.data);
+    }
   };
 
   return (
@@ -37,6 +45,7 @@ const Login = () => {
         </div>
         <div className="right">
           <h1>Login</h1>
+          <p style={{ color: "red" }}>{err && err}</p>
           <form action="">
             <input
               type="text"
@@ -50,7 +59,9 @@ const Login = () => {
               name="password"
               onChange={handleChange}
             />
-            <button onClick={handleLogin}>Login</button>
+            <button onClick={handleLogin}>
+              {isLoading ? "Please wait....." : "Login"}
+            </button>
           </form>
         </div>
       </div>

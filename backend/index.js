@@ -1,4 +1,4 @@
-import express  from "express";
+import express from "express";
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.js";
 import commentRoutes from "./routes/comments.js";
@@ -6,15 +6,19 @@ import likesRoutes from "./routes/likes.js";
 import postRoutes from "./routes/posts.js";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import cors from "cors"
+import cors from "cors";
 
 dotenv.config();
 const app = express();
 
 // Middlewares
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+});
 app.use(express.json());
-app.use(cors());
-app.use(cookieParser())
+app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cookieParser());
 
 // Routes
 app.use("/api/v1/users", userRoutes);
