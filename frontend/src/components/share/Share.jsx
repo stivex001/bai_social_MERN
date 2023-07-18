@@ -6,11 +6,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { apiCalls } from "../../axios.js";
 import {
-  useQuery,
   useMutation,
-  useQueryClient,
   QueryClient,
-  QueryClientProvider,
 } from "react-query";
 
 const Share = () => {
@@ -21,6 +18,17 @@ const Share = () => {
 
   const queryClient = new QueryClient();
 
+  const upload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await apiCalls.post("/upload", formData);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // Mutations
   const mutation = useMutation(
     (newPost) => {
@@ -29,14 +37,16 @@ const Share = () => {
     {
       onSuccess: () => {
         // Invalidate and refetch
-        queryClient.invalidateQueries("posts");
+        queryClient.invalidateQueries(["posts"]);
       },
     }
   );
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    mutation.mutate({ desc });
+    let imgUrl = "";
+    if (file) imgUrl = await upload();
+    mutation.mutate({ desc, img: imgUrl });
   };
 
   return (
