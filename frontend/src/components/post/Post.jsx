@@ -37,7 +37,7 @@ const Post = ({ post }) => {
         </div>
         <div className="actions">
           <div className="item">
-            {liked ? <MdOutlineFavorite /> : <MdOutlineFavoriteBorder />}
+            {liked ? <MdOutlineFavorite style={{color: "red"}} /> : <MdOutlineFavoriteBorder />}
             12 likes
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>

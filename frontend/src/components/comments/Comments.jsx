@@ -36,8 +36,6 @@ const Comments = ({ postId }) => {
     setDesc("");
   };
 
-  console.log(data);
-
   return (
     <div className="comments">
       <div className="write">
