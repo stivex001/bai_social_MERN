@@ -3,6 +3,7 @@ import "./comments.scss";
 import { AuthContext } from "../../context/authContext.jsx";
 import { useQuery } from "react-query";
 import moment from "moment";
+import { apiCalls } from "../../axios";
 
 // const comments = [
 //   {

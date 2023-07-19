@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineMessage } from "react-icons/ai";
 import Comments from "../comments/Comments";
 import { useState } from "react";
-import moment from "moment"
+import moment from "moment";
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
@@ -48,7 +48,7 @@ const Post = ({ post }) => {
             Share
           </div>
         </div>
-        {commentOpen && <Comments />}
+        {commentOpen && <Comments postId={post.id} />}
       </div>
     </div>
   );
