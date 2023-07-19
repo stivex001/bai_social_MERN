@@ -33,14 +33,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Routes
-app.post(
-  "/api/v1/upload",
-  upload.single("file", (req, res) => {
-    const file = req.file;
-    res.status(200).json(file.filename);
-  })
-);
+app.post("/api/v1/upload", upload.single("file"), (req, res) => {
+  const file = req.file;
+  res.status(200).json(file.filename);
+});
+
 app.use("/api/v1/users", userRoutes);
 // app.use("/api/v1/comments", commentRoutes);
 app.use("/api/v1/posts", postRoutes);
