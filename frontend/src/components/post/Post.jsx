@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineMessage } from "react-icons/ai";
 import Comments from "../comments/Comments";
 import { useState } from "react";
+import moment from "moment"
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
@@ -25,7 +26,7 @@ const Post = ({ post }) => {
               >
                 <p>{post.name}</p>
               </Link>
-              <span>{post.created_at} </span>
+              <span>{moment(post.created_at).fromNow()} </span>
             </div>
           </div>
           <FiMoreHorizontal />
