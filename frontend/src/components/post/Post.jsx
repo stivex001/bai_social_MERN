@@ -5,13 +5,23 @@ import { MdOutlineFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { AiOutlineMessage } from "react-icons/ai";
 import Comments from "../comments/Comments";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import moment from "moment";
+import { useQuery } from "react-query";
+import { apiCalls } from "../../axios";
+import { AuthContext } from "../../context/authContext.jsx";
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
 
-  const liked = false;
+  const { currentUser } = useContext(AuthContext);
+
+  const { isLoading, error, data } = useQuery(["likes", post.id], () =>
+    apiCalls.get("/likes?postId=" + post.id).then((res) => {
+      return res.data;
+    })
+  );
+
 
   return (
     <div className="post">
@@ -37,8 +47,8 @@ const Post = ({ post }) => {
         </div>
         <div className="actions">
           <div className="item">
-            {liked ? <MdOutlineFavorite style={{color: "red"}} /> : <MdOutlineFavoriteBorder />}
-            12 likes
+            {data.includes(currentUser.id) ? <MdOutlineFavorite style={{color: "red"}} /> : <MdOutlineFavoriteBorder />}
+            {data?.length} likes
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <AiOutlineMessage />5 Comments

@@ -8,11 +8,11 @@ export const getLikes = (req, res) => {
 
   db.query(q, [postId], (err, data) => {
     if (err) return res.status(500).json(err);
-    return res.status(200).json(data);
+    return res.status(200).json(data.map((like) => like.userId));
   });
 };
 
-export const addLikes = (req, res) => {
+export const addLike = (req, res) => {
   const token = req.cookies.access_token;
   const { desc, postId } = req.body;
 
@@ -37,3 +37,7 @@ export const addLikes = (req, res) => {
     });
   });
 };
+
+export const deleteLike = () => {
+
+}
