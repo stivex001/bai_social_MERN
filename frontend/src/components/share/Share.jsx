@@ -5,10 +5,7 @@ import Friend from "../../assets/friend.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { apiCalls } from "../../axios.js";
-import {
-  useMutation,
-  QueryClient,
-} from "react-query";
+import { useMutation, QueryClient } from "react-query";
 
 const Share = () => {
   const { currentUser } = useContext(AuthContext);
@@ -53,12 +50,19 @@ const Share = () => {
     <div className="share">
       <div className="container">
         <div className="top">
-          <img src={currentUser.profilePic} alt="" />
-          <input
-            type="text"
-            placeholder={`What's on your mind ${currentUser.name}?`}
-            onChange={(e) => setDesc(e.target.value)}
-          />
+          <div className="left">
+            <img src={currentUser.profilePic} alt="" />
+            <input
+              type="text"
+              placeholder={`What's on your mind ${currentUser.name}?`}
+              onChange={(e) => setDesc(e.target.value)}
+            />
+          </div>
+          <div className="right">
+            {file && (
+              <img className="file" alt="" src={URL.createObjectURL(file)} />
+            )}
+          </div>
         </div>
         <hr />
         <div className="bottom">
