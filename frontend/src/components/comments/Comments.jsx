@@ -8,7 +8,6 @@ import { apiCalls } from "../../axios";
 const Comments = ({ postId }) => {
   const { currentUser } = useContext(AuthContext);
   const [desc, setDesc] = useState("");
-
   const { isLoading, error, data } = useQuery(["comments"], () =>
     apiCalls.get("/comments?postId=" + postId).then((res) => {
       return res.data;
