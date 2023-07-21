@@ -26,18 +26,19 @@ const Post = ({ post }) => {
 
   const mutation = useMutation(
     (liked) => {
-      if (liked) return apiCalls.post("/likes", post.id);
-      return apiCalls.delete("/likes", { postId: post.id });
+      if (liked) return apiCalls.delete("/likes?postId=" + post.id);
+      return apiCalls.post("/likes", { postId: post.id });
     },
     {
       onSuccess: () => {
+        // Invalidate and refetch
         queryClient.invalidateQueries(["likes"]);
       },
     }
   );
 
   const handleLike = () => {
-    mutation.mutate(data.includes(["likes"]));
+    mutation.mutate(data.includes(currentUser.id));
   };
 
   return (
@@ -78,7 +79,7 @@ const Post = ({ post }) => {
             ) : (
               <MdOutlineFavoriteBorder onClick={handleLike} />
             )}
-            {data?.length} {data.length > 1 ? "likes" : "like"}
+            {data?.length} {data?.length > 1 ? "likes" : "like"}
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <AiOutlineMessage />5 Comments
