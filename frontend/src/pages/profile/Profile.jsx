@@ -2,18 +2,32 @@ import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsThreeDotsVertical, BsT
 import "./profile.scss";
 import { MdLanguage, MdOutlineMailOutline, MdPlace } from "react-icons/md";
 import Posts from "../../components/posts/Posts";
+import { useQuery } from "react-query";
+import { apiCalls } from "../../axios";
+import { useLocation } from "react-router-dom";
 
 const Profile = () => {
+
+  const userId = useLocation().pathname.split("/")[2]
+
+  const { isLoading, error, data } = useQuery(["user"], () =>
+    apiCalls.get("/users/find/" + userId).then((res) => {
+      return res.data;
+    })
+  );
+
+  console.log(data);
+
   return (
     <div className="profile">
       <div className="images">
         <img
-          src="https://images.pexels.com/photos/3102911/pexels-photo-3102911.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src={data.coverPic}
           alt=""
           className="cover"
         />
         <img
-          src="https://images.pexels.com/photos/3770258/pexels-photo-3770258.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src={data.profilePicture}
           className="profilePic"
         />
       </div>
@@ -37,15 +51,15 @@ const Profile = () => {
             </a>
           </div>
           <div className="center">
-            <span>Stephen Adeyemo</span>
+            <span>{data.name}</span>
             <div className="info">
               <div className="item">
                 <MdPlace />
-                <span>Nigeria</span>
+                <span>{data.city}</span>
               </div>
               <div className="item">
                 <MdLanguage />
-                <span>bai.dev</span>
+                <span>{data.website} </span>
               </div>
             </div>
             <button>follow</button>
