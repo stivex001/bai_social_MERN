@@ -7,7 +7,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 import Comments from "../comments/Comments";
 import { useContext, useState } from "react";
 import moment from "moment";
-import { useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { apiCalls } from "../../axios";
 import { AuthContext } from "../../context/authContext.jsx";
 
@@ -22,6 +22,23 @@ const Post = ({ post }) => {
     })
   );
 
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation(
+    (liked) => {
+      if (liked) return apiCalls.post("/likes", post.id);
+      return apiCalls.delete("/likes", { postId: post.id });
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["likes"]);
+      },
+    }
+  );
+
+  const handleLike = () => {
+    mutation.mutate(data.includes(["likes"]));
+  };
 
   return (
     <div className="post">
@@ -47,8 +64,21 @@ const Post = ({ post }) => {
         </div>
         <div className="actions">
           <div className="item">
-            {data?.includes(currentUser.id) ? <MdOutlineFavorite style={{color: "red"}} /> : <MdOutlineFavoriteBorder />}
-            {data?.length} {data.length > 1 ? 'likes' : 'like'}
+            {error ? (
+              <div style={{ color: "red" }}>Opps!! Something Went Wrong!</div>
+            ) : isLoading ? (
+              <div style={{ color: "green", fontSize: "30px" }}>
+                Loading.........
+              </div>
+            ) : data?.includes(currentUser.id) ? (
+              <MdOutlineFavorite
+                style={{ color: "red" }}
+                onClick={handleLike}
+              />
+            ) : (
+              <MdOutlineFavoriteBorder onClick={handleLike} />
+            )}
+            {data?.length} {data.length > 1 ? "likes" : "like"}
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <AiOutlineMessage />5 Comments

@@ -14,30 +14,46 @@ export const getLikes = (req, res) => {
 
 export const addLike = (req, res) => {
   const token = req.cookies.access_token;
-  const { desc, postId } = req.body;
+  const { postId } = req.body;
 
   if (!token) return res.status(403).json("Not Authorized");
 
   jwt.verify(token, "mysecret", (err, userInfo) => {
     if (err) return res.status(403).json("Invalid Token");
 
-    const q =
-      "INSERT INTO comments (`desc`, `userId`, `created_at`, `postId`) VALUES(?)";
+    const q = "INSERT INTO likes {`userId`, `postId`} VALUES=(?)";
 
     const values = [
-      desc,
       userInfo.id,
-      moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
       postId,
     ];
 
     db.query(q, [values], (err, data) => {
       if (err) return res.status(500).json(err);
-      return res.status(200).json("Comment has been created successfully");
+      return res.status(200).json("Post has been liked");
     });
   });
 };
 
-export const deleteLike = () => {
+export const deleteLike = (req, res) => {
+  const token = req.cookies.access_token;
+  const { postId } = req.body;
 
-}
+  if (!token) return res.status(403).json("Not Authorized");
+
+  jwt.verify(token, "mysecret", (err, userInfo) => {
+    if (err) return res.status(403).json("Invalid Token");
+
+    const q = "DELETE FROM likes WHERE `userId` = ? AND `postId` =? ";
+
+    const values = [
+      userInfo.id,
+      postId,
+    ];
+
+    db.query(q, [values], (err, data) => {
+      if (err) return res.status(500).json(err);
+      return res.status(200).json("post has been disliked");
+    });
+  });
+};
