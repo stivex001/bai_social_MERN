@@ -47,8 +47,8 @@ const Post = ({ post }) => {
         </div>
         <div className="actions">
           <div className="item">
-            {data.includes(currentUser.id) ? <MdOutlineFavorite style={{color: "red"}} /> : <MdOutlineFavoriteBorder />}
-            {data?.length} likes
+            {data?.includes(currentUser.id) ? <MdOutlineFavorite style={{color: "red"}} /> : <MdOutlineFavoriteBorder />}
+            {data?.length} {data.length > 1 ? 'likes' : 'like'}
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <AiOutlineMessage />5 Comments
