@@ -127,7 +127,7 @@ const Profile = () => {
                 <BsThreeDotsVertical />
               </div>
             </div>
-            <Posts />
+            <Posts userId={userId} />
           </div>
         </>
       )}
