@@ -83,10 +83,20 @@ const Profile = () => {
                     <span>{data.website} </span>
                   </div>
                 </div>
-                {userId === currentUser.id ? (
+                {error ? (
+                  <div style={{ color: "red" }}>
+                    Opps!! Something Went Wrong!
+                  </div>
+                ) : isLoading ? (
+                  <div style={{ color: "green", fontSize: "30px" }}>
+                    Loading.........
+                  </div>
+                ) : userId === currentUser.id ? (
                   <button>Update</button>
                 ) : (
-                  <button onClick={handleFollow}>follow</button>
+                  <button onClick={handleFollow}>
+                    {rData.includes(currentUser.id) ? "Following" : "Follow"}{" "}
+                  </button>
                 )}
               </div>
               <div className="right">
