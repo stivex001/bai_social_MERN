@@ -9,7 +9,7 @@ import {
 import "./profile.scss";
 import { MdLanguage, MdOutlineMailOutline, MdPlace } from "react-icons/md";
 import Posts from "../../components/posts/Posts";
-import { useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { apiCalls } from "../../axios";
 import { useLocation } from "react-router-dom";
 import { useContext } from "react";
@@ -36,9 +36,24 @@ const Profile = () => {
     })
   );
 
-  console.log(rData);
+  const queryClient = useQueryClient();
 
-  const handleFollow = () => {};
+  const mutation = useMutation(
+    (following) => {
+      if (following) return apiCalls.delete("/relationships?userId=" + userId);
+      return apiCalls.post("/relationships", { userId });
+    },
+    {
+      onSuccess: () => {
+        // Invalidate and refetch
+        queryClient.invalidateQueries(["relationship"]);
+      },
+    }
+  );
+
+  const handleFollow = () => {
+    mutation.mutate(rData.includes(currentUser.id));
+  };
 
   return (
     <div className="profile">
@@ -95,7 +110,15 @@ const Profile = () => {
                   <button>Update</button>
                 ) : (
                   <button onClick={handleFollow}>
-                    {rData.includes(currentUser.id) ? "Following" : "Follow"}{" "}
+                    {isLoading ? (
+                      <div style={{ color: "green", fontSize: "30px" }}>
+                        Loading.........
+                      </div>
+                    ) : rData.includes(currentUser.id) ? (
+                      "Following"
+                    ) : (
+                      "Follow"
+                    )}{" "}
                   </button>
                 )}
               </div>
