@@ -4,6 +4,7 @@ import authRoutes from "./routes/auth.js";
 import commentRoutes from "./routes/comments.js";
 import likesRoutes from "./routes/likes.js";
 import postRoutes from "./routes/posts.js";
+import relationshipRoutes from "./routes/relationships.js";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -43,6 +44,7 @@ app.use("/api/v1/comments", commentRoutes);
 app.use("/api/v1/posts", postRoutes);
 app.use("/api/v1/likes", likesRoutes);
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/relationship", relationshipRoutes);
 
 const port = process.env.PORT || 5000;
 
