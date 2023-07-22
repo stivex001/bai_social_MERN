@@ -44,7 +44,7 @@ app.use("/api/v1/comments", commentRoutes);
 app.use("/api/v1/posts", postRoutes);
 app.use("/api/v1/likes", likesRoutes);
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/relationship", relationshipRoutes);
+app.use("/api/v1/relationships", relationshipRoutes);
 
 const port = process.env.PORT || 5000;
 

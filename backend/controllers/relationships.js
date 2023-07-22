@@ -2,13 +2,13 @@ import { db } from "../db/connect.js";
 import jwt from "jsonwebtoken";
 
 export const getRelationships = (req, res) => {
-  const { postId } = req.query;
+  const { followedUserId } = req.query;
 
-  const q = `SELECT userId FROM likes WHERE postId = ?  `;
+  const q = `SELECT followerUserId FROM relationships WHERE followedUserId = ?  `;
 
-  db.query(q, [postId], (err, data) => {
+  db.query(q, [followedUserId], (err, data) => {
     if (err) return res.status(500).json(err);
-    return res.status(200).json(data.map((like) => like.userId));
+    return res.status(200).json(data.map((relationship) => relationship.followerUserId));
   });
 };
 

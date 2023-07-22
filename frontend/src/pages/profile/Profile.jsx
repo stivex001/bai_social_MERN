@@ -20,17 +20,25 @@ const Profile = () => {
 
   const { currentUser } = useContext(AuthContext);
 
-  const { isLoading, error, data } = useQuery(["users"], () =>
+  const { isLoading, error, data } = useQuery(["user"], () =>
     apiCalls.get("/users/find/" + userId).then((res) => {
       return res.data;
     })
   );
 
-  const handleFollow = () => {
+  const {
+    isLoading: rIsLoading,
+    error: rError,
+    data: rData,
+  } = useQuery(["relationship"], () =>
+    apiCalls.get("/relationships?followedUserId=" + userId).then((res) => {
+      return res.data;
+    })
+  );
 
-  }
+  console.log(rData);
 
-
+  const handleFollow = () => {};
 
   return (
     <div className="profile">
