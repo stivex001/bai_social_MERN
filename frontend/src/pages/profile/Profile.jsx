@@ -114,7 +114,7 @@ const Profile = () => {
                       <div style={{ color: "green", fontSize: "30px" }}>
                         Loading.........
                       </div>
-                    ) : rData.includes(currentUser.id) ? (
+                    ) : rData?.includes(currentUser.id) ? (
                       "Following"
                     ) : (
                       "Follow"
