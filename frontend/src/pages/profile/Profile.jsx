@@ -26,7 +26,11 @@ const Profile = () => {
     })
   );
 
-  console.log(data);
+  const handleFollow = () => {
+
+  }
+
+
 
   return (
     <div className="profile">
@@ -74,7 +78,7 @@ const Profile = () => {
                 {userId === currentUser.id ? (
                   <button>Update</button>
                 ) : (
-                  <button>follow</button>
+                  <button onClick={handleFollow}>follow</button>
                 )}
               </div>
               <div className="right">
