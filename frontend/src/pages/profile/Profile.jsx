@@ -110,7 +110,9 @@ const Profile = () => {
                     Loading.........
                   </div>
                 ) : userId === currentUser.id ? (
-                  <button>Update</button>
+                  <button onClick={() => setOpenUpdate(true)}>
+                    Update
+                  </button>
                 ) : (
                   <button onClick={handleFollow}>
                     {isLoading ? (
