@@ -53,3 +53,23 @@ export const addPost = (req, res) => {
     });
   });
 };
+
+export const deletePost = (req, res) => {
+  const token = req.cookies.access_token;
+  const { id } = req.params;
+
+  if (!token) return res.status(403).json("Not Authorized");
+
+  jwt.verify(token, "mysecret", (err, userInfo) => {
+    if (err) return res.status(403).json("Invalid Token");
+
+    const q = "DELETE FROM posts WHERE `id` = ? AND `userId` = ?";
+
+    db.query(q, [id, userInfo.id], (err, data) => {
+      if (err) return res.status(500).json(err);
+      if (data.affectedRows > 0)
+        return res.status(200).json("Post has been deleted successfully");
+      return res.status(403).json("You can only delete your post");
+    });
+  });
+};
