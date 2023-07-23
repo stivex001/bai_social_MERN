@@ -2,7 +2,7 @@ import { useState } from "react";
 import { apiCalls } from "../../axios";
 import "./update.scss";
 import { useMutation, useQueryClient } from "react-query";
-// import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { BsCloudArrowUp } from "react-icons/bs";
 
 const Update = ({ setOpenUpdate, user }) => {
   const [cover, setCover] = useState(null);
@@ -78,7 +78,7 @@ const Update = ({ setOpenUpdate, user }) => {
                   }
                   alt=""
                 />
-                {/* <CloudUploadIcon className="icon" /> */}
+                <BsCloudArrowUp className="icon" />
               </div>
             </label>
             <input
@@ -98,7 +98,7 @@ const Update = ({ setOpenUpdate, user }) => {
                   }
                   alt=""
                 />
-                {/* <CloudUploadIcon className="icon" /> */}
+                <BsCloudArrowUp className="icon" />
               </div>
             </label>
             <input
