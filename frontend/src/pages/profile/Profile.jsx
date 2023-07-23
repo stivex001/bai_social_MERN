@@ -67,8 +67,11 @@ const Profile = () => {
       ) : (
         <>
           <div className="images">
-            <img src={data.coverPic} alt="" className="cover" />
-            <img src={data.profilePicture} className="profilePic" />
+            <img src={"/upload/" + data.coverPic} alt="" className="cover" />
+            <img
+              src={"/upload/" + data.profilePicture}
+              className="profilePic"
+            />
           </div>
           <div className="profileContainer">
             <div className="userInfo">
@@ -110,9 +113,7 @@ const Profile = () => {
                     Loading.........
                   </div>
                 ) : userId === currentUser.id ? (
-                  <button onClick={() => setOpenUpdate(true)}>
-                    Update
-                  </button>
+                  <button onClick={() => setOpenUpdate(true)}>Update</button>
                 ) : (
                   <button onClick={handleFollow}>
                     {isLoading ? (
